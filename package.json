@@ -1,0 +1,20 @@
+{
+  "name": "practice_javascript_web_component_pattern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woose28/practice_javascript_web_component_pattern.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/woose28/practice_javascript_web_component_pattern/issues"
+  },
+  "homepage": "https://github.com/woose28/practice_javascript_web_component_pattern#readme"
+}
