@@ -1,4 +1,5 @@
 import Component from './core/Component.js';
+import ItemAppender from './component/ItemAppender.js';
 import Items from './component/Items.js';
 import SELECTOR from './constant/selector.js';
 import { $ } from './utils/domTool.js';
@@ -29,27 +30,32 @@ export default class App extends Component {
 
   template() {
     return `
+      <div id="${SELECTOR.ID_APPENDER}"></div>
       <div id="${SELECTOR.ID_ITEMS}"></div>
     `;
   }
 
   mounted() {
     this.$items = $(`#${SELECTOR.ID_ITEMS}`);
+    this.$appender = $(`#${SELECTOR.ID_APPENDER}`);
 
     new Items(this.$items, {
       items: this.state.items,
-      addItem: this.addItem.bind(this),
       toggleItem: this.toggleItem.bind(this),
       deleteItem: this.deleteItem.bind(this),
     });
+
+    new ItemAppender(this.$appender, {
+      addItem: this.addItem.bind(this),
+    });
   }
 
-  addItem() {
+  addItem(itemName) {
     const items = [
       ...this.state.items,
       {
         id: this.state.nextId,
-        name: `Item${this.state.nextId}`,
+        name: itemName,
         isActive: false,
       },
     ];

@@ -19,16 +19,11 @@ export default class Items extends Component {
           <button class="${SELECTOR.CLASS_DELETE_BUTTON}" data-id="${item.id}">삭제</button>
         </li>`)).join('')}
       </ul>
-      <button id="${SELECTOR.ID_ADD_BUTTON}">추가</button>
     `;
   }
 
   setEvent() {
-    const { addItem, toggleItem, deleteItem } = this.props;
-
-    this.addEvent('click', `#${SELECTOR.ID_ADD_BUTTON}`, () => {
-      addItem();
-    });
+    const { toggleItem, deleteItem } = this.props;
 
     this.addEvent('click', `.${SELECTOR.CLASS_ACTIVE_BUTTON}`, (event) => {
       toggleItem(parseInt(event.target.dataset.id, 10));
