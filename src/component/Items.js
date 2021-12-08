@@ -20,17 +20,18 @@ export default class Items extends Component {
   }
 
   setEvent() {
-    this.$target.addEventListener('click', ({ target }) => {
-      if (target.id === SELECTOR.ID_ADD_BUTTON) {
-        const items = [...this.state.items];
+    this.addEvent('click', `#${SELECTOR.ID_ADD_BUTTON}`, () => {
+      const items = [...this.state.items];
 
-        this.setState({ items: [...items, `Item${items.length + 1}`] });
-      } else if (target.classList.contains(SELECTOR.CLASS_DELETE_BUTTON)) {
-        const items = [...this.state.items];
-        items.splice(target.dataset.index, 1);
+      this.setState({ items: [...items, `Item:${items.length + 1}`] });
+    });
 
-        this.setState({ items });
-      }
+    this.addEvent('click', `.${SELECTOR.CLASS_DELETE_BUTTON}`, (event) => {
+      const { target } = event;
+      const items = [...this.state.items];
+      items.splice(target.dataset.index, 1);
+
+      this.setState({ items });
     });
   }
 }
