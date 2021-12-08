@@ -3,11 +3,11 @@ import SELECTOR from '../constant/selector.js';
 
 export default class Items extends Component {
   template() {
-    const { items } = this.props;
+    const { filterItems } = this.props;
 
     return `
       <ul>
-        ${items.map((item) => (`<li>
+        ${filterItems().map((item) => (`<li>
           ${item.name}
           <button 
             class="${SELECTOR.CLASS_ACTIVE_BUTTON}"
