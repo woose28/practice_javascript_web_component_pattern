@@ -1,6 +1,7 @@
 export default class Component {
-  constructor($target) {
+  constructor($target, props) {
     this.$target = $target;
+    this.props = props;
     this.state = null;
 
     this.setUp();
@@ -10,12 +11,15 @@ export default class Component {
 
   setUp() {}
 
+  mounted() {}
+
   template() {
     return '';
   }
 
   render() {
     this.$target.innerHTML = this.template();
+    this.mounted();
   }
 
   setEvent() {
