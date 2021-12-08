@@ -11,14 +11,17 @@ export default class App extends Component {
         {
           id: 1,
           name: 'apple',
+          isActive: true,
         },
         {
           id: 2,
           name: 'banana',
+          isActive: false,
         },
         {
           id: 3,
           name: 'cherry',
+          isActive: false,
         },
       ],
     };
@@ -36,6 +39,7 @@ export default class App extends Component {
     new Items(this.$items, {
       items: this.state.items,
       addItem: this.addItem.bind(this),
+      toggleItem: this.toggleItem.bind(this),
       deleteItem: this.deleteItem.bind(this),
     });
   }
@@ -46,6 +50,7 @@ export default class App extends Component {
       {
         id: this.state.nextId,
         name: `Item${this.state.nextId}`,
+        isActive: false,
       },
     ];
 
@@ -54,6 +59,21 @@ export default class App extends Component {
 
   deleteItem(id) {
     const items = this.state.items.filter((item) => item.id !== id);
+
+    this.setState({ items });
+  }
+
+  toggleItem(id) {
+    const items = this.state.items.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          isActive: !item.isActive,
+        };
+      }
+
+      return item;
+    });
 
     this.setState({ items });
   }

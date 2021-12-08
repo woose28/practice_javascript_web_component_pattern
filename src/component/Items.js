@@ -9,6 +9,13 @@ export default class Items extends Component {
       <ul>
         ${items.map((item) => (`<li>
           ${item.name}
+          <button 
+            class="${SELECTOR.CLASS_ACTIVE_BUTTON}"
+            style="color: ${item.isActive ? '#09F' : '#F09'}"
+            data-id="${item.id}"
+          >
+            ${item.isActive ? '활성' : '비활성'}
+          </button>
           <button class="${SELECTOR.CLASS_DELETE_BUTTON}" data-id="${item.id}">삭제</button>
         </li>`)).join('')}
       </ul>
@@ -17,10 +24,14 @@ export default class Items extends Component {
   }
 
   setEvent() {
-    const { addItem, deleteItem } = this.props;
+    const { addItem, toggleItem, deleteItem } = this.props;
 
     this.addEvent('click', `#${SELECTOR.ID_ADD_BUTTON}`, () => {
       addItem();
+    });
+
+    this.addEvent('click', `.${SELECTOR.CLASS_ACTIVE_BUTTON}`, (event) => {
+      toggleItem(parseInt(event.target.dataset.id, 10));
     });
 
     this.addEvent('click', `.${SELECTOR.CLASS_DELETE_BUTTON}`, (event) => {
