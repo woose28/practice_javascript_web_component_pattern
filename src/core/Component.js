@@ -5,6 +5,7 @@ export default class Component {
 
     this.setUp();
     this.render();
+    this.setEvent();
   }
 
   setUp() {}
@@ -15,7 +16,6 @@ export default class Component {
 
   render() {
     this.$target.innerHTML = this.template();
-    this.setEvent();
   }
 
   setEvent() {

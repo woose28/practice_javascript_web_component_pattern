@@ -1,6 +1,5 @@
 import Component from '../core/Component.js';
 import SELECTOR from '../constant/selector.js';
-import { $, $$ } from '../utils/domTool.js';
 
 export default class Items extends Component {
   setUp() {
@@ -21,19 +20,17 @@ export default class Items extends Component {
   }
 
   setEvent() {
-    $(`#${SELECTOR.ID_ADD_BUTTON}`).addEventListener('click', () => {
-      const { items } = this.state;
+    this.$target.addEventListener('click', ({ target }) => {
+      if (target.id === SELECTOR.ID_ADD_BUTTON) {
+        const items = [...this.state.items];
 
-      this.setState({ items: [...items, `Item${items.length + 1}`] });
-    });
-
-    $$(`.${SELECTOR.CLASS_DELETE_BUTTON}`).forEach((deleteButton) => {
-      deleteButton.addEventListener('click', ({ target }) => {
+        this.setState({ items: [...items, `Item${items.length + 1}`] });
+      } else if (target.classList.contains(SELECTOR.CLASS_DELETE_BUTTON)) {
         const items = [...this.state.items];
         items.splice(target.dataset.index, 1);
 
         this.setState({ items });
-      });
+      }
     });
   }
 }
