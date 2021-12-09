@@ -28,8 +28,8 @@
 <br>
 
 ## 📚 구현하면서 공부한 내용
-1. Html의 데이터 속성
-2. Javascript에서 이벤트가 전파되는 방식과 이벤트 위임
+1. [Html의 데이터 속성](https://github.com/woose28/TIL/blob/master/Javascript/dataAttribute.md)
+2. [Javascript 이벤트 위임](https://github.com/woose28/TIL/blob/master/Javascript/eventDelegation.md)
 3. 스코프와 스코프 체인
 
 <br>
